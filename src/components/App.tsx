@@ -3,13 +3,13 @@ import { Player } from './Player';
 import Storage from '../utils/Storage';
 import { Computer } from './Computer';
 
-interface IPlayer { player: string }
+interface IGame { player: string }
 
 const App = () => {
-  const [game, setGame] = useState<IPlayer | undefined>(Storage.get<IPlayer>());
+  const [game, setGame] = useState<IGame | undefined>(Storage.get<IGame>('game'));
   const gameChoice = (value: string) => {
     setGame({ player: value });
-    Storage.set<IPlayer>({ player: value });
+    Storage.set<IGame>({ player: value }, 'game');
   }
   const exitGame = () => {
     setGame(undefined);
@@ -21,6 +21,7 @@ const App = () => {
       {game && game.player === 'player' && <Player exit={exitGame} />}
       {!game && (
         <div className="intro">
+          <h1>Rock Paper and Scissor</h1>
           <button onClick={() => gameChoice('player')}>Player vs Computer</button>
           <button onClick={() => gameChoice('bot')}>Computer vs Computer</button>
         </div>
