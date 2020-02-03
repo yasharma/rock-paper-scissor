@@ -10,6 +10,9 @@ interface IBot {
 const defaultValue = { score: 0, selection: '', status: '' }
 
 export const Computer = ({ exit }: IGame) => {
+  /**
+   * Redux could be used here
+   */
   const [bot, setBotScore] = useState<IBot>(Storage.get('bot') || {
     first: defaultValue,
     second: defaultValue

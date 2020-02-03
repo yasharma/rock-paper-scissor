@@ -5,6 +5,9 @@ import { IPlayer } from '../interfaces/IPlayer';
 
 const defaultValue = { score: 0, selection: '', status: '' }
 export const Player = ({ exit }: IGame) => {
+  /**
+   * Redux could be used here
+   */
   const playerFromStorage = Storage.get<IPlayer>('player');
   const botFromStorage = Storage.get<IPlayer>('bot');
 
